@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return SingleChildScrollView(
       child: Form(
         key: _formKey,
-        autovalidate: _autoValidate,
+        autovalidateMode: _autoValidate as AutovalidateMode,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[

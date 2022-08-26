@@ -129,7 +129,7 @@ class _EditProfilePageState extends State<EditProfileScreen> {
         alignment: Alignment.topLeft,
         padding: EdgeInsets.symmetric(horizontal: SizeUtils.get(15)),
         child: Form(
-          autovalidate: _autoValidate,
+          autovalidateMode: _autoValidate as AutovalidateMode,
           key: _formKey,
           child: formColumn(),
         ),

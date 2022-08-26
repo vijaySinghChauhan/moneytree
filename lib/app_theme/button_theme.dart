@@ -37,7 +37,7 @@ class ButtonUtils {
     );
   }
 
-  static Widget btnBorderWhite(String title, onTap) {
+  /*static Widget btnBorderWhite(String title, onTap) {
     return OutlineButton(
       child: Text(title.toUpperCase()),
       onPressed: onTap,
@@ -45,7 +45,7 @@ class ButtonUtils {
       borderSide: BorderSide(color: Colors.white),
       highlightedBorderColor: Colors.white30,
     );
-  }
+  }*/
 
   static Widget btnFillGreen({String title, onTap, bool removeRadius = false, color = ColorConstants.APP_THEME_COLOR}) {
     return RaisedButton(

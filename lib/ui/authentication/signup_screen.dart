@@ -82,7 +82,7 @@ class _SignupScreenState extends State<SignupScreen> {
     return SingleChildScrollView(
       child: Form(
         key: _formKey,
-        autovalidate: _autoValidate,
+        autovalidateMode: _autoValidate as AutovalidateMode,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
