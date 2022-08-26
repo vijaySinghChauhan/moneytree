@@ -1,0 +1,29 @@
+class IconConstant {
+  static const String APP_LOGO = 'assets/icons/app_logo.jpeg';
+  static const String APP_ICON = 'assets/icons/app_icon.jpeg';
+  static const String BACKGROUND_IMAGE = 'assets/icons/background.jpg';
+  static const String BUDGETING = 'assets/icons/budgeting.png';
+  static const String CREDIT_DEBIT = 'assets/icons/credit_debit.png';
+  static const String D_LOGO = 'assets/icons/d_logo.png';
+  static const String DASHBOARD = 'assets/icons/dashboard.png';
+  static const String FINANCING_UNIVERSITY = 'assets/icons/financing_university.png';
+  static const String FINDING_JOB = 'assets/icons/finding_job.png';
+  static const String HOME = 'assets/icons/home.png';
+  static const String INSURANCE = 'assets/icons/insurance.png';
+  static const String INVESTING = 'assets/icons/investing.png';
+  static const String CRYPTO = 'assets/icons/crypto_icon.png';
+  static const String LOGIN_SCREEN = 'assets/icons/login_screen.jpg';
+  static const String LOGIN_SCREEN_COMPRESSED = 'assets/icons/login_screen_compressed.jpg';
+  static const String LOGOUT = 'assets/icons/logout.png';
+  static const String MAKING_MONEY = 'assets/icons/making_money.png';
+  static const String MARKETING = 'assets/icons/marketing.png';
+  static const String PROFILE = 'assets/icons/profile.png';
+  static const String TAXES = 'assets/icons/taxes.png';
+  static const String TREE = 'assets/icons/tree.png';
+  static const String DUPPY_FULLLOGO = 'assets/icons/duppy_fulllogo.png';
+  static const String BACKGROUND_MIN = 'assets/icons/background_min.jpg';
+  static const String BACKGROUND_TINY = 'assets/icons/background_tiny.jpg';
+  static const String BACKGROUND_RESIZE = 'assets/icons/background_resize.jpg';
+  static const String LOGIN_SCREEN_RESIZE = 'assets/icons/login_screen_resize.jpg';
+  static const String BACK = 'assets/icons/back.png';
+}
