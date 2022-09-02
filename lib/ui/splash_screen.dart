@@ -46,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     themeData = Theme.of(context);
-    return controller != null && controller.value.initialized
+    return controller != null && controller.value.isInitialized
         ? Container(alignment: Alignment.topCenter, child: buildVideo())
         : Container(color: Colors.white);
     // return splashBody();

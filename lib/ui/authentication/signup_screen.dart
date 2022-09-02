@@ -82,7 +82,7 @@ class _SignupScreenState extends State<SignupScreen> {
     return SingleChildScrollView(
       child: Form(
         key: _formKey,
-        autovalidateMode: _autoValidate as AutovalidateMode,
+        autovalidateMode: AutovalidateMode.always,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -258,7 +258,7 @@ class _SignupScreenState extends State<SignupScreen> {
         if (userCredential.user != null) storeData(userCredential.user.uid);
       } on FirebaseAuthException catch (e) {
         setLoadingState(false);
-        print(e.message + ' ' + e.code);
+        print("test-- "+e.message + ' ' + e.code);
         if (e.code == 'user-not-found') {
           Dialogs.showInfoDialog(
               context, 'The account already exists for that email.');

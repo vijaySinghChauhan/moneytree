@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return SingleChildScrollView(
       child: Form(
         key: _formKey,
-        autovalidateMode: _autoValidate as AutovalidateMode,
+        autovalidateMode:  AutovalidateMode.always,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -198,9 +198,14 @@ class _LoginScreenState extends State<LoginScreen> {
             .signInWithEmailAndPassword(email: _email, password: _password);
         if (userCredential.user != null) {
           storeData(userCredential.user.uid);
+
+          navigationPageToDashboard();
+
         }
+
       } on FirebaseAuthException catch (e) {
         setLoadingState(false);
+        print('vijayE---,$e');
         if (e.code == 'user-not-found') {
           Dialogs.showInfoDialog(context, 'No user found for that email.');
         } else if (e.code == 'wrong-password') {
@@ -216,17 +221,27 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> storeData(String uid) async {
-    print(uid);
-    var data = await FirebaseFirestore.instance
+
+    print( 'test--uid,$uid');
+    DocumentSnapshot data = await FirebaseFirestore.instance
         .collection(Strings.USERS)
         .doc(uid)
         .get();
-
+    print( 'test--data,$data');
     UserModel userData = UserModel.fromJson(data.data());
     PreferenceManager.instance.setIsLogin(true);
-    print(userData.toJson().toString() + 'ddd');
+
     await UsersTableManager.instance.addUser(userData);
-    navigationPageToDashboard();
+
+  }
+
+  Future<void> getUserNameFromUID(String uid) async {
+    print( 'test--data,$uid');
+    final snapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .where('uid', isEqualTo: uid)
+        .get();
+    print( 'test--data,$snapshot.docs.first');
   }
 
   void navigationPageToDashboard() {
