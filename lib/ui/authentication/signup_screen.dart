@@ -250,7 +250,7 @@ class _SignupScreenState extends State<SignupScreen> {
   void btnSignUpClick() async {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      setLoadingState(true);
+        setLoadingState(true);
       print('$_email, $_firstName, $_lastName, $_password');
       try {
         UserCredential userCredential = await FirebaseAuth.instance
@@ -287,7 +287,7 @@ class _SignupScreenState extends State<SignupScreen> {
         completed_per: '0');
 
     print(user.toJson().toString() + 'ddd');
-
+    navigationPageToDashboard();
     await FirebaseFirestore.instance
         .collection(Strings.USERS)
         .doc(uid)
@@ -295,12 +295,12 @@ class _SignupScreenState extends State<SignupScreen> {
 
     PreferenceManager.instance.setIsLogin(true);
     await UsersTableManager.instance.addUser(user);
-    navigationPageToDashboard();
+
   }
 
   void navigationPageToDashboard() {
     setLoadingState(false);
-    Get.offAllNamed(Routes.MAIN_SCREEN);
+    Get.offAllNamed(Routes.LOGIN_PAGE);
   }
 
   void setLoadingState(bool isShow) {
