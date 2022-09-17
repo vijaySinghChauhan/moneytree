@@ -54,5 +54,7 @@
     <string>Need camera permission to capture your profile photo.</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>Need photos access to select images for profile.</string>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 </dict>
 </plist>

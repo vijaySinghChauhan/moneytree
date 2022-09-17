@@ -190,23 +190,23 @@ class _DashboardScreenState extends State<DashboardScreen>
       }
     }
 
-    // if (pressedChapterId == completedChapterId + 1) {
-    //   await Get.toNamed(Routes.QUIZ_PAGE,
-    //       arguments: (completedChapterId + 1).toString());
-    //   printLoginData();
-    // } else {
-    //   if (pressedChapterId > completedChapterId) {
-    //     var chapterName = ChapterQueList.getChapterName(
-    //         id: (completedChapterId + 1).toString());
-    //     Dialogs.showInfoDialog(
-    //         context, 'Please complete the $chapterName questions first.');
-    //   } else {
-    //     var chapterName = ChapterQueList.getChapterName(
-    //         id: (pressedChapterId).toString());
-    //     Dialogs.showInfoDialog(context, '$chapterName completed');
-    //     // await Get.toNamed(Routes.QUIZ_PAGE,
-    //     //     arguments: (9).toString());
-    //   }
-    // }
+    if (pressedChapterId == completedChapterId + 1) {
+      await Get.toNamed(Routes.QUIZ_PAGE,
+          arguments: (completedChapterId + 1).toString());
+      printLoginData();
+    } else {
+      if (pressedChapterId > completedChapterId) {
+        var chapterName = ChapterQueList.getChapterName(
+            id: (completedChapterId + 1).toString());
+        Dialogs.showInfoDialog(
+            context, 'Please complete the $chapterName questions first.');
+      } else {
+        var chapterName = ChapterQueList.getChapterName(
+            id: (pressedChapterId).toString());
+        Dialogs.showInfoDialog(context, '$chapterName completed');
+        await Get.toNamed(Routes.QUIZ_PAGE,
+            arguments: (9).toString());
+      }
+    }
   }
 }
