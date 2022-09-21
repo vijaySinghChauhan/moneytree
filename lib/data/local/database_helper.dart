@@ -57,6 +57,6 @@ class DatabaseHelper {
   // Remove all Data
   void removeAllData() async {
     var client = await db;
-//    client.delete(DatabaseTable.TABLE_TEAM);
+    client.delete(DatabaseTable.TABLE_USERS);
   }
 }

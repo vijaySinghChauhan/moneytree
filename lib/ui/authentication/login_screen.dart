@@ -192,15 +192,13 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       print('$_email, $_password');
+      print( 'test--uid');
       try {
         setLoadingState(true);
         UserCredential userCredential = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);
         if (userCredential.user != null) {
           storeData(userCredential.user.uid);
-
-          navigationPageToDashboard();
-
         }
 
       } on FirebaseAuthException catch (e) {
@@ -221,6 +219,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> storeData(String uid) async {
+    navigationPageToDashboard();
 
     print( 'test--uid,$uid');
     DocumentSnapshot data = await FirebaseFirestore.instance
@@ -232,7 +231,6 @@ class _LoginScreenState extends State<LoginScreen> {
     PreferenceManager.instance.setIsLogin(true);
 
     await UsersTableManager.instance.addUser(userData);
-
   }
 
   Future<void> getUserNameFromUID(String uid) async {

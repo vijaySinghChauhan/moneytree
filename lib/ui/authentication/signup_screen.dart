@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -251,11 +253,22 @@ class _SignupScreenState extends State<SignupScreen> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
         setLoadingState(true);
-      print('$_email, $_firstName, $_lastName, $_password');
+      print("test--user"+'$_email, $_firstName, $_lastName, $_password');
       try {
+
         UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: _email, password: _password);
-        if (userCredential.user != null) storeData(userCredential.user.uid);
+             .createUserWithEmailAndPassword(email: _email, password: _password);
+        // print("test--user1"+userCredential.user.toString());
+
+
+        // if (userCredential.user != null) {
+          print("test--user3");
+
+          storeData(userCredential.user.uid);
+
+        // }
+
+
       } on FirebaseAuthException catch (e) {
         setLoadingState(false);
         print("test-- "+e.message + ' ' + e.code);
@@ -277,6 +290,8 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Future storeData(String uid) async {
+    print("send name "+_firstName );
+
     var user = UserModel(
         email: _email,
         first_name: _firstName,
@@ -286,17 +301,26 @@ class _SignupScreenState extends State<SignupScreen> {
         completed_chapter_id: '0',
         completed_per: '0');
 
-    print(user.toJson().toString() + 'ddd');
-    navigationPageToDashboard();
-    await FirebaseFirestore.instance
-        .collection(Strings.USERS)
-        .doc(uid)
-        .set(user.toJson());
+    print("send data "+user.toJson().toString() );
+
+    print("test-- ");
+
+    // await FirebaseFirestore.instance
+    //     .collection(Strings.USERS)
+    //     .doc(uid)
+    //     .set(user.toJson());
+    CollectionReference users = FirebaseFirestore.instance.collection(Strings.USERS);
+
+   users.add(user.toJson())
+          .then((value) => print("User Added"))
+          .catchError((error) => print("Failed to add user: $error"));
+
 
     PreferenceManager.instance.setIsLogin(true);
     await UsersTableManager.instance.addUser(user);
-
+    navigationPageToDashboard();
   }
+
 
   void navigationPageToDashboard() {
     setLoadingState(false);

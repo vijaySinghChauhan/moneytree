@@ -14,9 +14,10 @@ class UsersTableManager {
 
   Future<int> addUser(UserModel user) async {
     var client = await DatabaseHelper.instance.db;
-    if ((await fetchUser(user.id)) == null) {
+     if ((await fetchUser(user.id)) == null) {
       user.completed_chapter_id = '0';
       user.completed_per = '0';
+      print("Database added :"+user.toString());
       return client.insert(DatabaseTable.TABLE_USERS, user.toJson(),
           conflictAlgorithm: ConflictAlgorithm.replace);
     } else {
