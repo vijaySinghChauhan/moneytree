@@ -20,10 +20,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   ThemeData themeData;
   UserModel userData;
-  bool isFirstCompleted = false;
-  bool isFirstLocked = false;
-  bool isSecCompleted = false;
-  bool isSecLocked = false;
+  static bool isFirstCompleted = false;
+  static bool isFirstLocked = false;
+  static bool isSecCompleted = false;
+  static bool isSecLocked = false;
 
   @override
   void initState() {

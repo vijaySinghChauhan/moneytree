@@ -204,8 +204,8 @@ class _DashboardScreenState extends State<DashboardScreen>
         var chapterName = ChapterQueList.getChapterName(
             id: (pressedChapterId).toString());
         Dialogs.showInfoDialog(context, '$chapterName completed');
-        await Get.toNamed(Routes.QUIZ_PAGE,
-            arguments: (9).toString());
+        // await Get.toNamed(Routes.QUIZ_PAGE,
+        //     arguments: (9).toString());
       }
     }
   }
